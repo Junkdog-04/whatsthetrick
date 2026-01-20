@@ -43,6 +43,57 @@ h2 {
   margin-top: 3rem;
 }
 
+.meaning__final a {
+  position: relative;
+  display: inline-block;
+  color: #6cff8f;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.4px;
+  animation: kiPulse 3.5s ease-in-out infinite;
+}
+
+
+.meaning__final a::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(108, 255, 143, 0.35) 0%,
+    rgba(108, 255, 143, 0.15) 40%,
+    transparent 70%
+  );
+  filter: blur(14px);
+  opacity: 0.6;
+  z-index: -1;
+  animation: kiAura 3.5s ease-in-out infinite;
+}
+
+@keyframes kiPulse {
+  0%, 100% {
+    text-shadow: 0 0 6px rgba(108, 255, 143, 0.35);
+  }
+  50% {
+    text-shadow:
+      0 0 14px rgba(108, 255, 143, 0.65),
+      0 0 28px rgba(108, 255, 143, 0.35);
+  }
+}
+
+@keyframes kiAura {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+
 h3 {
   font-size: clamp(1.3rem, 2.5vw, 2rem);
   margin-bottom: 1rem;
@@ -106,57 +157,6 @@ section {
   font-size: clamp(0.95rem, 1.6vw, 1.05rem);
 }
 
-.final-trick {
-  margin-top: 4rem;
-  text-align: center;
-  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-  font-weight: 600;
-  color: #6cff8f;
-  letter-spacing: 0.4px;
-  position: relative;
-  animation: kiPulse 3.5s ease-in-out infinite;
-}
-
-.final-trick::before {
-  content: "";
-  position: absolute;
-  inset: -12px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(108, 255, 143, 0.35) 0%,
-    rgba(108, 255, 143, 0.15) 40%,
-    transparent 70%
-  );
-  filter: blur(12px);
-  opacity: 0.6;
-  animation: kiAura 3.5s ease-in-out infinite;
-  z-index: -1;
-}
-
-@keyframes kiPulse {
-  0%, 100% {
-    text-shadow: 0 0 6px rgba(108, 255, 143, 0.35);
-  }
-  50% {
-    text-shadow:
-      0 0 12px rgba(108, 255, 143, 0.6),
-      0 0 24px rgba(108, 255, 143, 0.3);
-  }
-}
-
-@keyframes kiAura {
-  0%, 100% {
-    transform: scale(0.95);
-    opacity: 0.45;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.75;
-  }
-}
-
-
 
 footer {
   text-align: center;
@@ -168,4 +168,11 @@ footer {
 footer a {
   color: #9494FF;
   font-weight: bold;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .meaning__final a,
+  .meaning__final a::before {
+    animation: none;
+  }
 }
